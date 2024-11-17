@@ -4,7 +4,12 @@
       "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAumTo2RMVwR_z6WJCRZPBo4VgxYrPG23MWA&s",
       "alt": "Uet logo"
     },
-    "title": "University of Engineering and Technology Taxila , Pak"
+    "title": "University of Engineering and Technology Taxila , Pak",
+    "user": {
+      "image": "",
+      "name": "",
+      "id": ""
+    }
   },
   "hero": {
     "heading": "Welcome to My Blog",
