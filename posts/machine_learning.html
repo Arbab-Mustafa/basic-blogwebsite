@@ -13,59 +13,22 @@
   <!-- Header -->
   <header>
     <div class="container">
-      <h1>Getting Started with Machine Learning</h1>
-      <p>An introduction to machine learning concepts and techniques.</p>
+      <h1 id="page-title">Loading...</h1>
+      <p id="page-description">Please wait while the content loads.</p>
     </div>
   </header>
 
   <!-- Blog Content -->
   <section id="blog-content">
     <div class="container">
-      <img class="main-img"
-        src="https://bigblue.academy/images/image/blog/what-is-machine-learning-2023-beginners-guide/1-3cxboknql4qs-lryht3pqw.jpg"
-        alt="Machine Learning">
+      <img id="main-img" class="main-img" alt="Machine Learning">
       <article>
-        <h2>What Is Machine Learning?</h2>
-        <p>Machine learning is a subset of artificial intelligence that focuses on developing algorithms that allow
-          computers to learn and make predictions from data. It involves training models to recognize patterns and make
-          decisions without explicit programming.</p>
+        <h2 id="intro-title">Loading...</h2>
+        <p id="intro-text">Please wait...</p>
 
-        <h3>Types of Machine Learning</h3>
-        <p>Machine learning can be categorized into three main types:</p>
-        <ul>
-          <li><strong>Supervised Learning:</strong> The model is trained on labeled data, learning to predict outcomes
-            based on input features.</li>
-          <li><strong>Unsupervised Learning:</strong> The model is trained on unlabeled data and aims to find hidden
-            patterns or groupings.</li>
-          <li><strong>Reinforcement Learning:</strong> The model learns through interactions with an environment,
-            receiving rewards or penalties for actions taken.</li>
-        </ul>
-        <img
-          src="https://javatpoint-images.s3.eu-north-1.amazonaws.com/tutorial/machine-learning/images/types-of-machine-learning2.png"
-          alt="Types of Machine Learning">
+        <div id="sections"></div>
 
-        <h3>Popular Algorithms</h3>
-        <p>Some popular machine learning algorithms include:</p>
-        <ul>
-          <li><strong>Linear Regression:</strong> Used for predicting continuous values.</li>
-          <li><strong>Decision Trees:</strong> Used for classification and regression tasks.</li>
-          <li><strong>Neural Networks:</strong> Inspired by the human brain, used for complex pattern recognition.</li>
-        </ul>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9uT7j5-9YsfaJnbv18JVA46yeUmth0L36tw&s"
-          alt="Machine Learning Algorithms">
-
-        <h3>Applications of Machine Learning</h3>
-        <p>Machine learning has a wide range of applications, including:</p>
-        <ul>
-          <li><strong>Healthcare:</strong> Predicting patient outcomes, diagnosing diseases, and personalizing
-            treatments.</li>
-          <li><strong>Finance:</strong> Fraud detection, algorithmic trading, and risk assessment.</li>
-          <li><strong>Retail:</strong> Customer segmentation, recommendation systems, and inventory management.</li>
-        </ul>
-
-        <p>Getting started with machine learning involves understanding these fundamental concepts, experimenting with
-          algorithms, and applying them to real-world problems. It's a field with endless possibilities and significant
-          impact on various industries.</p>
+        <p id="conclusion-text">Loading conclusion...</p>
       </article>
     </div>
   </section>
@@ -73,9 +36,63 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2024 My Blog. All Rights Reserved.</p>
+      <p id="footer-text"></p>
     </div>
   </footer>
+
+  <script>
+    // Fetch the JSON file and display the content
+    fetch('dataM.json')
+      .then(response => response.json())
+      .then(data => {
+        // Set page title and description
+        document.getElementById('page-title').textContent = data.title;
+        document.getElementById('page-description').textContent = data.description;
+
+        // Set main image
+        document.getElementById('main-img').src = data.main_image;
+
+        // Set introduction
+        document.getElementById('intro-title').textContent = data.content.introduction.title;
+        document.getElementById('intro-text').textContent = data.content.introduction.text;
+
+        // Set sections dynamically
+        const sectionsContainer = document.getElementById('sections');
+        data.content.sections.forEach(section => {
+          const sectionElement = document.createElement('section');
+
+          const sectionTitle = document.createElement('h3');
+          sectionTitle.textContent = section.title;
+
+          const sectionText = document.createElement('p');
+          sectionText.textContent = section.text;
+
+          const ul = document.createElement('ul');
+          section.list.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>${item.type || item.algorithm || item.application}:</strong> ${item.description}`;
+            ul.appendChild(li);
+          });
+
+          const sectionImage = document.createElement('img');
+          sectionImage.src = section.image;
+          sectionImage.alt = section.title;
+
+          sectionElement.appendChild(sectionTitle);
+          sectionElement.appendChild(sectionText);
+          sectionElement.appendChild(ul);
+          sectionElement.appendChild(sectionImage);
+          sectionsContainer.appendChild(sectionElement);
+        });
+
+        // Set conclusion text
+        document.getElementById('conclusion-text').textContent = data.content.conclusion.text;
+
+        // Set footer text
+        document.getElementById('footer-text').textContent = data.footer.text;
+      })
+      .catch(error => console.error('Error loading the JSON data:', error));
+  </script>
 </body>
 
 </html>

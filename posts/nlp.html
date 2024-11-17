@@ -13,53 +13,16 @@
   <!-- Header -->
   <header>
     <div class="container">
-      <h1>Basics of Natural Language Processing (NLP)</h1>
-      <p>An overview of NLP and its key techniques.</p>
+      <h1 id="blog-title"></h1>
+      <p id="blog-header"></p>
     </div>
   </header>
 
   <!-- Blog Content -->
   <section id="blog-content">
     <div class="container">
-      <img class="main-img"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7SSSfkE7Auy_g4nZCCttZ_9K8aXZLyoBjCA&s"
-        alt="Natural Language Processing">
-      <article>
-        <h2>What Is Natural Language Processing?</h2>
-        <p>Natural Language Processing (NLP) is a field of artificial intelligence that focuses on the interaction
-          between computers and human language. It involves enabling computers to understand, interpret, and generate
-          human language in a meaningful way.</p>
-
-        <h3>Key NLP Techniques</h3>
-        <p>Some of the key techniques in NLP include:</p>
-        <ul>
-          <li><strong>Tokenization:</strong> The process of breaking down text into smaller units, such as words or
-            phrases.</li>
-          <li><strong>Part-of-Speech Tagging:</strong> Identifying the grammatical role of each word in a sentence.</li>
-          <li><strong>Named Entity Recognition (NER):</strong> Identifying and classifying entities such as names,
-            dates, and locations in text.</li>
-          <li><strong>Sentiment Analysis:</strong> Determining the sentiment or emotional tone of a piece of text.</li>
-        </ul>
-        <img
-          src="https://lh6.googleusercontent.com/XtHA5w3zfaNIyoTJYvLRxSOsImuLVFDrnEa9Mxd12k0R-pAKlu8KiQgTK7rnTH2L5Yon62N12lt22gTTwtnvvZS6OeGjkfDekCbaZqpHSnD6P6A1uFTGMBgPnP53aeIiG_1WkJkHR4HzXfwLhA"
-          alt="NLP Techniques">
-
-        <h3>Applications of NLP</h3>
-        <p>NLP has a wide range of applications, including:</p>
-        <ul>
-          <li><strong>Chatbots:</strong> Providing automated responses and customer support.</li>
-          <li><strong>Translation:</strong> Translating text between different languages.</li>
-          <li><strong>Text Summarization:</strong> Creating concise summaries of longer texts.</li>
-        </ul>
-
-        <h3>Challenges in NLP</h3>
-        <p>Despite its advancements, NLP still faces several challenges, such as understanding context, handling
-          ambiguous language, and dealing with different languages and dialects.</p>
-
-        <p>NLP is a rapidly evolving field with ongoing research aimed at improving the accuracy and capabilities of
-          language processing systems. It plays a crucial role in making human-computer interactions more natural and
-          effective.</p>
-      </article>
+      <img id="main-img" class="main-img" src="" alt="Natural Language Processing">
+      <div id="content"></div>
     </div>
   </section>
 
@@ -69,6 +32,60 @@
       <p>&copy; 2024 My Blog. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <script>
+    // Fetch the JSON data
+    fetch('dataN.json')
+      .then(response => response.json())
+      .then(data => {
+        // Display the blog title and header
+        document.getElementById('blog-title').innerText = data.title;
+        document.getElementById('blog-header').innerText = data.header;
+
+        // Set the main image
+        document.getElementById('main-img').src = data.mainImage;
+
+        // Render the content sections
+        const contentContainer = document.getElementById('content');
+
+        data.sections.forEach(section => {
+          const sectionElement = document.createElement('section');
+
+          // Create the heading for each section
+          const sectionHeading = document.createElement('h2');
+          sectionHeading.innerText = section.heading;
+          sectionElement.appendChild(sectionHeading);
+
+          // Add the content paragraph
+          const sectionContent = document.createElement('p');
+          sectionContent.innerText = section.content;
+          sectionElement.appendChild(sectionContent);
+
+          // If the section has a list, create it
+          if (section.list) {
+            const ul = document.createElement('ul');
+            section.list.forEach(item => {
+              const li = document.createElement('li');
+              li.innerHTML = `<strong>${item.title}:</strong> ${item.description}`;
+              ul.appendChild(li);
+            });
+            sectionElement.appendChild(ul);
+          }
+
+          // If the section has an image, include it
+          if (section.image) {
+            const img = document.createElement('img');
+            img.src = section.image;
+            img.alt = section.heading;
+            sectionElement.appendChild(img);
+          }
+
+          // Append the section to the content container
+          contentContainer.appendChild(sectionElement);
+        });
+      })
+      .catch(error => console.error('Error loading blog content:', error));
+  </script>
 </body>
 
 </html>

@@ -1,0 +1,34 @@
+{
+  "title": "Introduction to Web Technologies",
+  "description": "Explore the core technologies that drive the web.",
+  "mainImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8GhlDyKK9-Ay0s7Pg68e037nEDDrcMjMgw&s",
+  "content": [
+    {
+      "heading": "What Are Web Technologies?",
+      "paragraph": "Web technologies are the various tools and techniques used to create and manage websites and web applications. They encompass everything from the basic HTML and CSS to advanced frameworks and APIs."
+    },
+    {
+      "heading": "HTML - The Foundation",
+      "paragraph": "HTML (Hypertext Markup Language) is the standard markup language used to create web pages. It structures content with elements like headings, paragraphs, and links.",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMtQ3NQ_Q7S6SMpUcEjyR2J2Ck-L5_e0fJ1g&s"
+    },
+    {
+      "heading": "CSS - Styling the Web",
+      "paragraph": "CSS (Cascading Style Sheets) is used to style and layout web pages. It allows developers to apply colors, fonts, and spacing to HTML elements, creating visually appealing websites.",
+      "image": "https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2019/10/sample-css-snapshot.jpeg"
+    },
+    {
+      "heading": "JavaScript - Adding Interactivity",
+      "paragraph": "JavaScript is a programming language that enables interactive elements on web pages. It allows developers to create dynamic content, handle user interactions, and perform complex calculations.",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFz-b2UW-hqE9MhCLVHZ-iJCOvyrr7fMtpaw&s"
+    },
+    {
+      "heading": "Frameworks and Libraries",
+      "paragraph": "Modern web development often involves using frameworks and libraries such as React, Angular, and Vue.js. These tools streamline development and enhance functionality."
+    },
+    {
+      "heading": "Web APIs",
+      "paragraph": "Web APIs (Application Programming Interfaces) allow different software systems to communicate. They are essential for integrating external services and data into web applications."
+    }
+  ]
+}

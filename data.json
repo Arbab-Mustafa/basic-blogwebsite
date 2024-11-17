@@ -1,0 +1,58 @@
+{
+  "header": {
+    "logo": {
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAumTo2RMVwR_z6WJCRZPBo4VgxYrPG23MWA&s",
+      "alt": "Uet logo"
+    },
+    "title": "University of Engineering and Technology Taxila , Pak",
+    "user": {
+      "image": "https://www.arbabmustafa.com/pic1.png",
+      "name": "Arbab",
+      "id": "22-SE-58"
+    }
+  },
+  "hero": {
+    "heading": "Welcome to My Blog",
+    "description": "Explore the latest trends and insights in web technologies, data science, and more!",
+    "cta_text": "Read Our Latest Posts",
+    "cta_link": "#blog-preview"
+  },
+  "blogPreview": {
+    "heading": "Latest Posts",
+    "posts": [
+      {
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8GhlDyKK9-Ay0s7Pg68e037nEDDrcMjMgw&s",
+        "title": "Introduction to Web Technologies",
+        "description": "Learn about the core technologies used in web development and how they shape modern web experiences.",
+        "link": "posts/web_tech.html"
+      },
+      {
+        "image": "https://miro.medium.com/v2/resize:fit:730/0*POjH5vv_7t8s8loG",
+        "title": "Understanding Data Science",
+        "description": "Explore the world of data science and its applications in analyzing and interpreting complex data.",
+        "link": "posts/data_science.html"
+      },
+      {
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFChDGHDR0IbTz2KfO4dhd_3qNiaM63EDHrw&s",
+        "title": "Introduction to Web 3.0",
+        "description": "Discover the decentralized web and how blockchain technology is changing the internet.",
+        "link": "posts/web3.html"
+      },
+      {
+        "image": "https://bigblue.academy/images/image/blog/what-is-machine-learning-2023-beginners-guide/1-3cxboknql4qs-lryht3pqw.jpg",
+        "title": "Getting Started with Machine Learning",
+        "description": "Understand the basics of machine learning and its various applications in modern technology.",
+        "link": "posts/machine_learning.html"
+      },
+      {
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7SSSfkE7Auy_g4nZCCttZ_9K8aXZLyoBjCA&s",
+        "title": "Introduction to NLP",
+        "description": "Learn about Natural Language Processing and how it's used to process and analyze human language.",
+        "link": "posts/nlp.html"
+      }
+    ]
+  },
+  "footer": {
+    "text": "&copy; 2024 My Blog. All Rights Reserved."
+  }
+}

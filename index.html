@@ -14,20 +14,16 @@
   <header>
     <div class="container">
       <nav class="nav-bar">
-
-        <img class="img"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAumTo2RMVwR_z6WJCRZPBo4VgxYrPG23MWA&s"
-          alt="Uet logo">
+        <img class="img" id="logo" alt="Uet logo">
         <div>
-          <h2 class="main-head">University of Engineering and Technology Taxila , Pak</h2>
+          <h2 class="main-head" id="title"></h2>
         </div>
         <ul>
           <li class="li">
-            <span><img class="me-img" src="https://www.arbabmustafa.com/pic1.png" alt=""></span>
-            <span>Arbab</span>
-            <span>22-SE-58</span>
+            <span><img class="me-img" id="user-img" alt=""></span>
+            <span id="user-name"></span>
+            <span id="user-id"></span>
           </li>
-
         </ul>
       </nav>
     </div>
@@ -36,62 +32,18 @@
   <!-- Hero Section -->
   <section id="hero">
     <div class="hero-content">
-      <h1>Welcome to My Blog</h1>
-      <p>Explore the latest trends and insights in web technologies, data science, and more!</p>
-      <a href="#blog-preview" class="btn-primary">Read Our Latest Posts</a>
+      <h1 id="hero-heading"></h1>
+      <p id="hero-description"></p>
+      <a id="cta-link" href="#blog-preview" class="btn-primary"></a>
     </div>
   </section>
 
   <!-- Blog Preview -->
   <section id="blog-preview">
     <div class="container">
-      <h2>Latest Posts</h2>
-      <div class="blog-grid">
-        <!-- Blog Post 1 -->
-        <div class="blog-card">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8GhlDyKK9-Ay0s7Pg68e037nEDDrcMjMgw&s"
-            alt="Web Technologies">
-          <div class="blog-card-content">
-            <h3><a href="posts/web_tech.html">Introduction to Web Technologies</a></h3>
-            <p>Learn about the core technologies used in web development and how they shape modern web experiences.</p>
-          </div>
-        </div>
-        <!-- Blog Post 2 -->
-        <div class="blog-card">
-          <img src="https://miro.medium.com/v2/resize:fit:730/0*POjH5vv_7t8s8loG" alt="Data Science">
-          <div class="blog-card-content">
-            <h3><a href="posts/data_science.html">Understanding Data Science</a></h3>
-            <p>Explore the world of data science and its applications in analyzing and interpreting complex data.</p>
-          </div>
-        </div>
-        <!-- Blog Post 3 -->
-        <div class="blog-card">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFChDGHDR0IbTz2KfO4dhd_3qNiaM63EDHrw&s"
-            alt="Web 3.0">
-          <div class="blog-card-content">
-            <h3><a href="posts/web3.html">Introduction to Web 3.0</a></h3>
-            <p>Discover the decentralized web and how blockchain technology is changing the internet.</p>
-          </div>
-        </div>
-        <!-- Blog Post 4 -->
-        <div class="blog-card">
-          <img
-            src="https://bigblue.academy/images/image/blog/what-is-machine-learning-2023-beginners-guide/1-3cxboknql4qs-lryht3pqw.jpg"
-            alt="Machine Learning">
-          <div class="blog-card-content">
-            <h3><a href="posts/machine_learning.html">Getting Started with Machine Learning</a></h3>
-            <p>Understand the basics of machine learning and its various applications in modern technology.</p>
-          </div>
-        </div>
-        <!-- Blog Post 5 -->
-        <div class="blog-card">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7SSSfkE7Auy_g4nZCCttZ_9K8aXZLyoBjCA&s"
-            alt="Natural Language Processing">
-          <div class="blog-card-content">
-            <h3><a href="posts/nlp.html">Introduction to NLP</a></h3>
-            <p>Learn about Natural Language Processing and how it's used to process and analyze human language.</p>
-          </div>
-        </div>
+      <h2 id="blog-preview-heading"></h2>
+      <div class="blog-grid" id="blog-posts">
+        <!-- Dynamic blog posts will be inserted here -->
       </div>
     </div>
   </section>
@@ -99,9 +51,67 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2024 My Blog. All Rights Reserved.</p>
+      <p id="footer-text"></p>
     </div>
   </footer>
+
+  <script>
+    // Fetch the data from data.json
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        // Populate header section
+        document.getElementById('logo').src = data.header.logo.src;
+        document.getElementById('logo').alt = data.header.logo.alt;
+        document.getElementById('title').innerText = data.header.title;
+        document.getElementById('user-img').src = data.header.user.image;
+        document.getElementById('user-name').innerText = data.header.user.name;
+        document.getElementById('user-id').innerText = data.header.user.id;
+
+        // Populate hero section
+        document.getElementById('hero-heading').innerText = data.hero.heading;
+        document.getElementById('hero-description').innerText = data.hero.description;
+        document.getElementById('cta-link').innerText = data.hero.cta_text;
+        document.getElementById('cta-link').href = data.hero.cta_link;
+
+        // Populate blog preview section
+        document.getElementById('blog-preview-heading').innerText = data.blogPreview.heading;
+
+        const blogPostsContainer = document.getElementById('blog-posts');
+        data.blogPreview.posts.forEach(post => {
+          const blogCard = document.createElement('div');
+          blogCard.classList.add('blog-card');
+
+          const postImage = document.createElement('img');
+          postImage.src = post.image;
+          postImage.alt = post.title;
+
+          const postContent = document.createElement('div');
+          postContent.classList.add('blog-card-content');
+
+          const postTitle = document.createElement('h3');
+          const postLink = document.createElement('a');
+          postLink.href = post.link;
+          postLink.innerText = post.title;
+          postTitle.appendChild(postLink);
+
+          const postDescription = document.createElement('p');
+          postDescription.innerText = post.description;
+
+          postContent.appendChild(postTitle);
+          postContent.appendChild(postDescription);
+
+          blogCard.appendChild(postImage);
+          blogCard.appendChild(postContent);
+
+          blogPostsContainer.appendChild(blogCard);
+        });
+
+        // Populate footer section
+        document.getElementById('footer-text').innerHTML = data.footer.text;
+      })
+      .catch(error => console.error('Error loading JSON data:', error));
+  </script>
 </body>
 
 </html>
